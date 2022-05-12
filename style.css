@@ -13,3 +13,39 @@ body {
 .container {
   margin-top: 20px;
 }
+
+.categories {
+  list-style: none;
+  display: flex;
+  margin: 5px;
+  gap: 10px;
+}
+
+.tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  padding: 2px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+p {
+  margin-top: 10px;
+}
+
+.general {
+  background-color: lavender;
+}
+
+.optional {
+  background-color: antiquewhite;
+}
+
+.required {
+  background-color: lightpink;
+}

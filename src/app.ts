@@ -1,17 +1,52 @@
 const tasksContainer = document.querySelector('.tasks') as HTMLUListElement
+const categoryContainer = document.querySelector(
+  '.categories'
+) as HTMLUListElement
 const taskInput = document.querySelector('#name') as HTMLInputElement
 const buttonAdd = document.querySelector('button')
 
-const tasks = [
+interface Task {
+  name: string
+  done: boolean
+  category?: string
+}
+
+const categories = ['general', 'required', 'optional']
+
+const tasks: Task[] = [
   { name: 'Learn TS', done: false },
-  { name: 'Learn Vue', done: true },
-  { name: 'Learn Nuxt', done: false },
+  { name: 'Learn Vue', done: true, category: 'required' },
+  { name: 'Learn Nuxt', done: false, category: 'optional' },
+  { name: 'Sleep', done: false, category: 'optional' },
+  { name: 'Eat', done: false, category: 'general' },
 ]
+
+const renderCategory = () => {
+  categoryContainer.innerHTML = ''
+  categories.forEach((category) => {
+    const categoryElement: HTMLLIElement = document.createElement('li')
+    const radio: HTMLInputElement = document.createElement('input')
+    radio.type = 'radio'
+    radio.name = 'category'
+    radio.id = radio.value = category
+
+    const label: HTMLLabelElement = document.createElement('label')
+    label.innerText = category
+    label.setAttribute('for', category)
+
+    categoryElement.appendChild(radio)
+    categoryElement.appendChild(label)
+    categoryContainer.appendChild(categoryElement)
+  })
+}
 
 const render = () => {
   tasksContainer.innerHTML = ''
   tasks.forEach((task, index) => {
     const taskElement: HTMLLIElement = document.createElement('li')
+    if (task.category) {
+      taskElement.classList.add(task.category)
+    }
 
     const label: HTMLLabelElement = document.createElement('label')
     label.innerText = task.name
@@ -32,8 +67,8 @@ const render = () => {
   })
 }
 
-const addTask = (taskName: string) => {
-  tasks.push({ name: taskName, done: false })
+const addTask = (task: Task) => {
+  tasks.push(task)
 }
 
 tasksContainer.addEventListener('change', (e) => {
@@ -46,8 +81,9 @@ tasksContainer.addEventListener('change', (e) => {
 
 buttonAdd.addEventListener('click', (e) => {
   e.preventDefault()
-  addTask(taskInput.value)
+  addTask({ name: taskInput.value, done: false })
   render()
 })
 
+renderCategory()
 render()
