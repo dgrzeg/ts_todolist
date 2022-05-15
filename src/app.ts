@@ -18,7 +18,7 @@ const addTask = (task: Task) => {
 
 tasksContainer.addEventListener('change', (e) => {
   if (!e.target) return
-  const tar = e.target as HTMLInputElement
+  const tar = e.target as HTMLElement
   const checkbox: HTMLInputElement = tar.closest('input[type="checkbox"]')
   const i: number = +checkbox.id.split('-')[1]
   tasks[i].done = checkbox.checked
@@ -26,7 +26,7 @@ tasksContainer.addEventListener('change', (e) => {
 
 categoryContainer.addEventListener('change', (e) => {
   if (!e.target) return
-  const tar = e.target as HTMLInputElement
+  const tar = e.target as HTMLElement
   const radio: HTMLInputElement = tar.closest('input[type="radio"]')
   selectedCategory = radio.value as Category
 })
