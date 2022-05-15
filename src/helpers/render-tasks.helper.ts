@@ -1,4 +1,4 @@
-import { Task } from '../types/types'
+import { Task } from '../types/types.js'
 
 const renderTasks = (tasks: Task[], tasksContainer: HTMLUListElement) => {
   tasksContainer.innerHTML = ''

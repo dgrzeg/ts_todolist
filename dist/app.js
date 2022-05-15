@@ -1,8 +1,9 @@
+import { Category } from './types/types.js';
 import renderTasks from './helpers/render-tasks.helper.js';
 import renderCategories from './helpers/render-categories.helper.js';
 import tasks from './data/tasks.js';
 import categories from './data/categories.js';
-let selectedCategory = 'general';
+let selectedCategory = Category.GENERAL;
 const tasksContainer = document.querySelector('.tasks');
 const categoryContainer = document.querySelector('.categories');
 const taskInput = document.querySelector('#name');
@@ -28,6 +29,7 @@ categoryContainer.addEventListener('change', (e) => {
 buttonAdd.addEventListener('click', (e) => {
     e.preventDefault();
     addTask({ name: taskInput.value, done: false, category: selectedCategory });
+    renderCategories(categories, categoryContainer, selectedCategory);
     renderTasks(tasks, tasksContainer);
 });
 renderCategories(categories, categoryContainer, selectedCategory);

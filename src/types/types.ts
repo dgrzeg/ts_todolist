@@ -1,4 +1,8 @@
-export type Category = 'general' | 'required' | 'optional'
+export enum Category {
+  GENERAL = 'general',
+  REQUIRED = 'required',
+  OPTIONAL = 'optional',
+}
 
 export interface Task {
   name: string

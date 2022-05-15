@@ -1,5 +1,9 @@
-import { Category } from '../types/types'
+import { Category } from '../types/types.js'
 
-const categories: Category[] = ['general', 'required', 'optional']
+const categories: Category[] = [
+  Category.GENERAL,
+  Category.OPTIONAL,
+  Category.REQUIRED,
+]
 
 export default categories

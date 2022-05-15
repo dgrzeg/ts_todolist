@@ -1,10 +1,10 @@
-import { Category, Task } from './types/types'
+import { Category, Task } from './types/types.js'
 import renderTasks from './helpers/render-tasks.helper.js'
 import renderCategories from './helpers/render-categories.helper.js'
 import tasks from './data/tasks.js'
 import categories from './data/categories.js'
 
-let selectedCategory: Category = 'general'
+let selectedCategory: Category = Category.GENERAL
 
 const tasksContainer: HTMLUListElement = document.querySelector('.tasks')
 const categoryContainer: HTMLUListElement =
@@ -34,6 +34,7 @@ categoryContainer.addEventListener('change', (e) => {
 buttonAdd.addEventListener('click', (e) => {
   e.preventDefault()
   addTask({ name: taskInput.value, done: false, category: selectedCategory })
+  renderCategories(categories, categoryContainer, selectedCategory)
   renderTasks(tasks, tasksContainer)
 })
 

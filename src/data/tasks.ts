@@ -1,11 +1,11 @@
-import { Task } from '../types/types'
+import { Category, Task } from '../types/types.js'
 
 const tasks: Task[] = [
   { name: 'Learn TS', done: false },
-  { name: 'Learn Vue', done: true, category: 'required' },
-  { name: 'Learn Nuxt', done: false, category: 'optional' },
-  { name: 'Sleep', done: false, category: 'optional' },
-  { name: 'Eat', done: false, category: 'general' },
+  { name: 'Learn Vue', done: true, category: Category.REQUIRED },
+  { name: 'Learn Nuxt', done: false, category: Category.OPTIONAL },
+  { name: 'Sleep', done: false, category: Category.OPTIONAL },
+  { name: 'Eat', done: false, category: Category.GENERAL },
 ]
 
 export default tasks
